@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+   <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+		<title>Subjects</title>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<script src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/quiz.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var c = new Quiz();
+				c.init();
+			});
+		</script>
+  	
+ </head>
+ <body>
+ 	<div class="container">
+ 		<div class="userhello"><span class="list-num username"></span>Hello</div>
+	<img src="../images/mind.png" class="img-brain" alt="Are you a genius">
+	<h1>Are you a genius</h1>
+	<br />
+	
+	<!--help dialog box content-->
+			<div class="popup" id="help-dialog-box">
+				<h1 class="underline">Help</h1>
+				<hr />
+				 <iframe class="iframe-help" src="iframe.html"></iframe>
+				 <div class="table">
+				 	<div class="table-row">
+				 		<div class="table-cell dialog-button" id="help-back">
+				 			<button  class="buttons" type="close-popup">Back</button>
+				 		</div>
+				 	</div>
+				 </div>
+			</div>
+			
+
+			<!--end of help dialog box content-->
+
+					
+				
+				
+				
+				<!--sign out dialog box content-->
+			<div class="popup" id="sign-out-dialog-box">
+				<h1 class="underline">Sign Out</h1>
+				<hr />
+					<h2>Are you sure?</h2>
+				 <div class="table">
+				 	<div class="table-row">
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons" type="href" location="../html/login.html">Yes</button>
+				 		</div>
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons" type="close-popup">No</button>
+				 		</div>
+				 	</div>
+				 </div>
+				 
+			</div>
+	
+			
+
+			<!--end of sign out dialog box content-->
+				
+	
+	
+	<h3>Choose the subject to test your skills.</h3>
+	<div id="choose-subjects-container" class="table">
+		<div class="table-row">
+			<div class="table-cell">
+				<button class="buttons subjects rounded" type="href" location="../html/quiz.html?sub=chem">Chemistry</button>
+			</div>
+		</div>
+			<div class="table-row">
+				<div class="table-cell">
+					<button class="buttons subjects rounded" type="href" location="../html/quiz.html?sub=phy">Physics</button>
+				</div>
+			</div>
+			<div class="table-row">
+				<div class="table-cell">
+					<button class="buttons subjects rounded" type="href" location="../html/quiz.html?sub=math">Mathematics</button>
+				</div>
+			</div>
+	</div>
+			
+				<button class="buttons" id="help" type="open-popup" popup="help-dialog-box">
+					Help
+				</button>
+			
+
+				<button class="buttons" id="signout" type="open-popup" popup="sign-out-dialog-box">
+						Sign Out
+					</button>
+				
+				
+	</div>
+ </body>
+</html>

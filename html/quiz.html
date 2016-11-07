@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+		<title>Quiz</title>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<script src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/questions.js"></script>
+		<script type="text/javascript" src="../js/quiz.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var c = new Quiz();
+				c.init();
+			});
+		</script>
+	</head>
+	<body>
+		<div class="container" id="quiz-page">
+			
+ 		<div class="userhello">Hello<span class="list-num username"> </span></div>
+			<button class="buttons" id="btn-exit" type="open-popup" popup="exit-dialog-box">
+				Exit
+			</button>
+			
+			<div id="timer"></div>
+			<div id="scorediv">$<span  class="list-num userscore"></span></div>
+			
+			
+			
+			
+			<img src="../images/mind.png" class="img-brain" alt="Are you a genius">
+			<h1>Are you a genius</h1>
+
+
+			<!--exit dialog box content-->
+			<div class="popup" id="exit-dialog-box">
+				<h1 class="underline">Exit</h1>
+				<hr />
+				 <h2>Are you sure?</h2>
+				 <div class="table">
+				 	<div class="table-row">
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons" type="href" location="../html/subjects.html">Yes</button>
+				 		</div>
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons" type="close-popup">No</button>
+				 		</div>
+				 	</div>
+				 </div>
+				 
+			</div>
+	
+			
+
+			<!--end of exit dialog box content-->
+
+
+		<!--wrong answer dialog box content-->
+			<div class="popup" id="wrong-dialog-box">
+				<h1 class="underline">Oops Wrong Answer</h1>
+				<hr />
+				 <h2>your score is...</h2>
+				 <div class="table">
+				 	<div class="table-row">
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons" type="href" location="../html/subjects.html">OK</button>
+				 		</div>
+				 	</div>
+				 </div>
+				 
+			</div>
+	
+			
+
+			<!--end of wrong answer dialog box content-->
+			
+			
+			<!--right answer dialog box content-->
+			<div class="popup" id="right-dialog-box">
+				<h1 class="underline">Congrats Right Answer</h1>
+				<hr />
+				 <h2>your score is...</h2>
+				 <div class="table">
+				 	<div class="table-row">
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons" type="next-popup-close">Next</button>
+				 		</div>
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons" id="buy" type="open-popup" popup="buy-dialog-box">Buy Lifeline</button>
+				 		</div>
+				 	</div>
+				 </div>
+				 
+			</div>
+	
+			
+
+			<!--end of right answer dialog box content-->
+			
+		
+			
+			<!--lifeline list dialog box content-->
+			<div class="popup" id="buy-dialog-box">
+				<h1 class="underline">Buy Lifeline</h1>
+				<hr />
+				<div class="lifeline-container">
+					<div class="table">
+					 	<div class="table-row">
+					 		<div class="table-cell">
+								<img src="../images/timelife.png" class="btn-lifeline lifeline-list">
+							</div>
+							<div class="table-cell">
+									<h2 class="inline">$5000</h2>
+							</div>
+							<div class="table-cell">
+								<button class="buttons lifeline-button" id="buy-timelife" type="open-popup" popup="timelife-dialog-box">
+								Buy
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="table">
+				 		<div class="table-row">
+					 		<div class="table-cell">
+								<img src="../images/swaplife.png" class="btn-lifeline lifeline-list">
+							</div>
+							<div class="table-cell">
+									<h2 class="inline">$15000</h2>
+							</div>
+							<div class="table-cell">
+								<button class="buttons lifeline-button" id="buy-swaplife" type="open-popup" popup="swaplife-dialog-box">
+								Buy
+								</button>
+							</div>
+						</div>
+					</div>
+				
+					<div class="table">
+				 		<div class="table-row">
+				 			<div class="table-cell">
+								<img src="../images/fiftylife.png" class="btn-lifeline lifeline-list">
+							</div>
+							<div class="table-cell">
+									<h2 class="inline">$10000</h2>
+							</div>
+							<div class="table-cell">
+								<button class="buttons lifeline-button" id="buy-fiftylife" type="open-popup" popup="fiftylife-dialog-box">
+								Buy
+								</button>
+							</div>
+						</div>
+					</div>
+				
+					<div class="table">
+				 		<div class="table-row">
+				 			<div class="table-cell">
+								<img src="../images/stoplife.png" class="btn-lifeline lifeline-list">
+							</div>
+							<div class="table-cell">
+								<h2 class="inline">$8000</h2>
+							</div>
+							<div class="table-cell">
+								<button class="buttons lifeline-button" id="buy-stoplife" type="open-popup" popup="stoplife-dialog-box">
+								Buy
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br />
+				
+				 <div class="table">
+				 	<div class="table-row">
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons back" type="close-popup">Back</button>
+				 		</div>
+				 	</div>
+				 </div>
+				 
+			</div>
+			<!--end of lifeline list dialog box content-->
+			
+			
+			
+			
+			
+			
+			
+			
+
+
+			<!--time's up dialog box content-->
+			<div class="popup" id="timeup-dialog-box">
+				<h1 class="underline">Oops Time's Up</h1>
+				<hr />
+				 <h2>your score is...</h2>
+				 <div class="table">
+				 	<div class="table-row">
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons" type="href" location="../html/subjects.html">OK</button>
+				 		</div>
+				 	</div>
+				 </div>
+				 
+			</div>
+	
+			
+
+			<!--end of time's up dialog box content-->
+			<!--popups-->
+		<!--stoplife dialog box content-->
+			<div class="popup" id="stoplife-dialog-box">
+				<h1 class="underline">Stop time</h1>
+				<hr />
+				<img src="../images/stoplife.png" class="lifeline-buy" />
+				 <h2 class="lifeline-buy-text">This lifeline will stop your clock in only just $8000</h2>
+				 <div class="table">
+				 	<div class="table-row">
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons"  type="buy-stoplife" id="buy-stoplife">Buy Now</button>
+				 		</div>
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons" type="close-popup">cancel</button>
+				 		</div>
+				 	</div>
+				 </div>
+				 
+			</div>
+	
+			
+
+			<!--end of stoplife dialog box content-->
+			<!--timelife dialog box content-->
+			<div class="popup" id="timelife-dialog-box">
+				<h1 class="underline">+1 min</h1>
+				<hr />
+				<img src="../images/timelife.png" class="lifeline-buy" />
+				 <h2 class="lifeline-buy-text">This lifeline give you 1min extra time in only just $5000</h2>
+				 <div class="table">
+				 	<div class="table-row">
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons" type="buy-tlife" id="buy-tlife">Buy Now</button>
+				 		</div>
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons" type="close-popup">cancel</button>
+				 		</div>
+				 	</div>
+				 </div>
+				 
+			</div>
+	
+			
+
+			<!--end of timelife dialog box content-->
+			<!--swaplife dialog box content-->
+			<div class="popup" id="swaplife-dialog-box">
+				<h1 class="underline">Swap Question</h1>
+				<hr />
+				<img src="../images/swaplife.png" class="lifeline-buy" />
+				 <h2 class="lifeline-buy-text">This lifeline will change the current question in only just $15000</h2>
+				 <div class="table">
+				 	<div class="table-row">
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons" type="buy-swaplife" id="buy-swaplife">Buy Now</button>
+				 		</div>
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons" type="close-popup">cancel</button>
+				 		</div>
+				 	</div>
+				 </div>
+				 
+			</div>
+	
+			
+
+			<!--end of swaplife dialog box content-->
+			<!--fiftylife dialog box content-->
+			<div class="popup" id="fiftylife-dialog-box">
+				<h1 class="underline">Fifty-Fifty</h1>
+				<hr />
+				<img src="../images/fiftylife.png" class="lifeline-buy" />
+				 <h2 class="lifeline-buy-text">This lifeline will delete two incorrect options in only just $10000</h2>
+				 <div class="table">
+				 	<div class="table-row">
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons" type="buy-fiftylife" id="buy-fiftylife">Buy Now</button>
+				 		</div>
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons" type="close-popup">cancel</button>
+				 		</div>
+				 	</div>
+				 </div>
+				 
+			</div>
+	
+			
+
+			<!--end of fiftylife dialog box content-->
+			
+			
+				<!--not buydialog box content-->
+			<div class="popup" id="not-buy-dialog-box">
+				<h1 class="underline">Sorry</h1>
+				<h2 id="not-buy">You can not purchase this lifeline as you have not enough money or this lifeline is already available.</h2>
+				<hr />
+				 <div class="table">
+				 	<div class="table-row">
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons" type="close-popup" id="not-buy-button">cancel</button>
+				 		</div>
+				 	</div>
+				 </div>
+				 
+			</div>
+	
+			
+
+			<!--end of not buy dialog box content-->
+			
+			<!--win dialog box content-->
+			<div class="popup" id="win-dialog-box">
+				<h1 class="underline">Congrats</h1>
+				<hr />
+				 <h2>You gave all the correct answers...</h2>
+				 <div class="table">
+				 	<div class="table-row">
+				 		<div class="table-cell dialog-button">
+				 			<button class="buttons" type="href" location="../html/subjects.html">OK</button>
+				 		</div>
+				 	</div>
+				 </div>
+				 
+			</div>
+	
+			
+
+			<!--end of win dialog box content-->
+
+			<div class="life-line">
+				<button class="btn-lifeline buttons" type="tlife" id="timelife"></button>
+				<button class="btn-lifeline buttons" type="swaplife" id="swaplife"></button>
+				<button class="btn-lifeline buttons" type="fiftylife" id="fiftylife"></button>
+				<button class="btn-lifeline buttons" type="stoplife" id="stoplife"></button>
+			</div>
+
+			<div id="quiz-container" class="table"></div>
+		</div>
+	</body>
+</html>

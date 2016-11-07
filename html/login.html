@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript">
+			var users=[];
+			function validation() {
+				var mobile = document.getElementById("mobile").value;
+				var name = document.getElementById("name").value;
+				
+				if(isNaN(mobile) || mobile < 7000000000 || mobile > 9999999999) {
+					alert("Please enter a valid 10 digit mobile number");
+					return false;
+				}else
+				{
+					if(localStorage.users)
+					{
+						var isUserAvailable = false;
+						users = JSON.parse(localStorage.users);
+						for(var i=0;i<users.length;i++)
+						{
+							if(users[i].mobile == mobile)
+							{	sessionStorage.userIndex = i;
+								isUserAvailable = true;
+								break;
+							}
+						}
+						
+						if(!isUserAvailable)
+						{
+							_createNewUser(name, mobile);
+						}
+						
+			//			console.log(users);
+					}else
+					{
+						_createNewUser(name,mobile);
+					}
+				}
+				
+			//	alert("reached");
+			}
+			
+			function _createNewUser(name, mobile)
+			{
+				var user = {uuid:guid(),username:name,mobile:mobile,userscore:0};
+						users.push(user);
+						sessionStorage.userIndex = users.length-1;
+						localStorage.users = JSON.stringify(users);
+	//					console.log("users : ", user, JSON.stringify(user));
+			}
+			
+			function guid(){
+			    var d = new Date().getTime();
+			    if(window.performance && typeof window.performance.now === "function"){
+			        d += performance.now(); //use high-precision timer if available
+			    }
+			    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+			        var r = (d + Math.random()*16)%16 | 0;
+			        d = Math.floor(d/16);
+			        return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+			    });
+			    return uuid;
+			}
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<img src="../images/mind.png" class="img-brain" alt="Are you a genius">
+			<h1>Are you a genius?</h1>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<p id="demo1"></p>
+			<div class="form-container table">
+				<form  method="post" action="subjects.html" onsubmit="return validation()">
+					<div class="table-row">
+						<div class="table-cell">
+							<input id="name" type="text" autofocus  required name="username" placeholder="Enter your name">
+						</div>
+					</div>
+					<div class="table-row">
+						<div class="table-cell">
+							<input id="mobile"  type="text"  required placeholder="Enter your mobile no" >
+						</div>
+					</div>
+					<div class="table-row">
+						<div class="table-cell">
+							<input class="buttons subjects rounded" value="Sign in"  type="submit">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
